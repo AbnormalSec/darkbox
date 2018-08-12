@@ -3,7 +3,7 @@
 import argparse
 
 
-class ls:
+class template:
     def __init__(self):
         version = '0.0.0'
     
