@@ -29,7 +29,11 @@ def main():
         print_usage()
         return
 
-    cmd_module = importlib.import_module('commands.{}'.format(cmd_name))
+    try:
+        cmd_module = importlib.import_module('commands.{}'.format(cmd_name))
+    except ModuleNotFoundError:
+        print("Error: Tool not found!")
+        return
     cmd = getattr(cmd_module, cmd_name)
     sys.argv = sys.argv[1:]
     c = cmd()
