@@ -1,6 +1,8 @@
 
+from .base64 import base64
+from .cat import cat
 from .ls import ls
 from .wget import wget
 from .xxd import xxd
 
-__all__ = [ 'ls', 'wget', 'xxd' ]
+__all__ = [ 'base64', 'cat', 'ls', 'wget', 'xxd' ]
