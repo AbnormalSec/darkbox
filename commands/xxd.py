@@ -3,8 +3,6 @@
 import argparse
 import binascii
 
-def sidebar_str(s):
-    return ''.join(chr(i) if 0x19<i<0x7f else '.' for i in s)
 
 
 class xxd:
@@ -21,6 +19,10 @@ class xxd:
         parser.add_argument("file", nargs='?')
         return parser
     
+    @staticmethod
+    def sidebar_str(s):
+        return ''.join(chr(i) if 0x19<i<0x7f else '.' for i in s)
+
     def run(self):
         parser = self.get_parser()
         args = vars(parser.parse_args())
@@ -44,7 +46,7 @@ class xxd:
                 else:
                     hex_line = ' '.join(hex_line[i:i+4] for i in range(0, len(hex_line), 4))
                     hex_counter = hex(line_counter * args['cols'])[2:].zfill(8)
-                    print("{}: {}  {}".format(hex_counter, hex_line, sidebar_str(raw_line)))
+                    print("{}: {}  {}".format(hex_counter, hex_line, self.sidebar_str(raw_line)))
 
                 line_counter += 1
 
