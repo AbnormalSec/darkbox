@@ -1,9 +1,10 @@
-""" darkbox template for a command """
+""" darkbox base64 command """
 
 import os
 import argparse
-from base64 import b64encode, b64decode
+
 from textwrap import wrap
+from base64 import b64encode, b64decode
 
 
 class base64:
@@ -43,7 +44,7 @@ class base64:
             in_data = f.read()
 
         if args['decode']:
-            in_data = in_data.replace(b"\n",b"")
+            in_data = in_data.replace(b"\n", b"")
             print(b64decode(in_data).decode("utf-8"), end='')
 
         else:

@@ -1,21 +1,19 @@
-""" darkbox template for a command """
+""" darkbox xxd command """
 
-import argparse
 import binascii
+from .command import Command
 
 
-
-class xxd:
+class xxd(Command):
     def __init__(self):
         self.version = '0.0.1'
 
     def get_parser(self):
-        parser = argparse.ArgumentParser(description="produce or reverse hexdumps")
+        parser = super().get_parser(description="produce or reverse hexdumps")
         parser.add_argument("-r", "--reverse", action="store_true")
         parser.add_argument("-u", "--uppercase", action="store_true")
         parser.add_argument("-p", "--plain", action="store_true")
         parser.add_argument("-c", "--cols", type=int, default=16)
-        parser.add_argument('-v', '--version', default=False, action='store_true')
         parser.add_argument("file", nargs='?')
         return parser
     
@@ -24,12 +22,8 @@ class xxd:
         return ''.join(chr(i) if 0x19<i<0x7f else '.' for i in s)
 
     def run(self):
-        parser = self.get_parser()
-        args = vars(parser.parse_args())
-        if args['version']:
-            print('darkbox {} v{}'.format(self.__class__.__name__, self.version))
-            return
-        
+        args = self.get_args()
+
         with open(args['file'], 'rb') as f:
             line_counter = 0
             while True:
@@ -42,7 +36,7 @@ class xxd:
 
                 if args['plain']:
                     print(hex_line, end='')
-                
+
                 else:
                     hex_line = ' '.join(hex_line[i:i+4] for i in range(0, len(hex_line), 4))
                     hex_counter = hex(line_counter * args['cols'])[2:].zfill(8)
