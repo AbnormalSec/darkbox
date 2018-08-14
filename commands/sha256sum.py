@@ -6,6 +6,7 @@ from .template import Command
 class sha256sum(Command):
     def __init__(self):
         self.version = '0.0.2'
+        self.algo = "sha256"
     
     def get_parser(self):
         parser = super().get_parser()
@@ -18,7 +19,7 @@ class sha256sum(Command):
         for i in args["files"]:
             try:
                 with open(i, 'r') as f:
-                    hash_ret = hashlib.new("sha256", f.read().encode("utf-8"))
+                    hash_ret = hashlib.new(self.algo, f.read().encode("utf-8"))
                 print("{} {}".format(hash_ret.hexdigest(), i))
 
             except IsADirectoryError:
