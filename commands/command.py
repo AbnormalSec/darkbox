@@ -1,6 +1,8 @@
 """ darkbox template for a command """
+
 import argparse
 from sys import stderr
+
 
 class Command:
     def __init__(self):

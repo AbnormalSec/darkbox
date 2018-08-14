@@ -1,7 +1,8 @@
-""" darkbox template for a command """
+""" darkbox xxd command """
 
 import binascii
-from .template import Command
+from .command import Command
+
 
 class xxd(Command):
     def __init__(self):

@@ -1,7 +1,8 @@
-""" darkbox template for a command """
+""" darkbox sha256sum command """
 
 import hashlib
-from .template import Command
+from .command import Command
+
 
 class sha256sum(Command):
     def __init__(self):
@@ -10,17 +11,17 @@ class sha256sum(Command):
     
     def get_parser(self):
         parser = super().get_parser()
-        parser.add_argument("files", nargs="*")
+        parser.add_argument('files', nargs='*')
         return parser
     
     def run(self):
         args = self.get_args()
 
-        for i in args["files"]:
+        for i in args['files']:
             try:
-                with open(i, 'r') as f:
-                    hash_ret = hashlib.new(self.algo, f.read().encode("utf-8"))
-                print("{} {}".format(hash_ret.hexdigest(), i))
+                with open(i, 'rb') as f:
+                    hash_ret = hashlib.new(self.algo, f.read())
+                print('{} {}'.format(hash_ret.hexdigest(), i))
 
             except IsADirectoryError:
                 self.directory_error(i)

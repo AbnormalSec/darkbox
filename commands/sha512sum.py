@@ -1,6 +1,7 @@
-""" darkbox template for a command """
+""" darkbox sha512sum command """
 
 from .sha256sum import sha256sum
+
 
 class sha512sum(sha256sum):
     def __init__(self):
