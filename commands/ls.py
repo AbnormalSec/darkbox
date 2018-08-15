@@ -1,25 +1,19 @@
 """ darkbox ls command """
 
+from .template import Command
+
 import os
 import argparse
 
 
-class ls:
+class ls(Command):
     def __init__(self):
         self.version = '0.0.1'
     
     def get_parser(self):
-        parser = argparse.ArgumentParser()
-        parser.add_argument('-v', '--version',
-            default=False, action='store_true')
+        parser = super().get_parser()
         return parser
     
     def run(self):
-        parser = self.get_parser()
-        args = vars(parser.parse_args())
-        if args['version']:
-            print('darkbox {cls} v{version}'.format(
-                cls=self.__class__.__name__,
-                version=self.version))
-            return
+        args = self.get_args()
         print(' '.join(os.listdir()))

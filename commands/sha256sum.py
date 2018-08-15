@@ -1,13 +1,13 @@
 """ darkbox sha256sum command """
 
 import hashlib
-from .command import Command
+from .template import Command
 
 
 class sha256sum(Command):
     def __init__(self):
         self.version = '0.0.2'
-        self.algo = "sha256"
+        self.algo = 'sha256'
     
     def get_parser(self):
         parser = super().get_parser()

@@ -1,6 +1,6 @@
 """ darkbox cat command """
 
-from .command import Command
+from .template import Command
 
 
 class cat(Command):

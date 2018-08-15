@@ -9,9 +9,9 @@ __version__ = '0.0.1'
 
 def print_usage():
     print("Usage: darkbox <tool> [OPTIONS]")
-    print("Tools: {}".format(
-        ', '.join([t for t in dir(commands) if not t.startswith('__')])
-    ))
+    tools = [t for t in dir(commands) if not t.startswith('__')]
+    tools.remove('template')
+    print("Tools: {}".format(', '.join(tools)))
 
 
 def main():

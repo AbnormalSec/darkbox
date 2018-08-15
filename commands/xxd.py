@@ -1,7 +1,8 @@
 """ darkbox xxd command """
 
+from .template import Command
+
 import binascii
-from .command import Command
 
 
 class xxd(Command):

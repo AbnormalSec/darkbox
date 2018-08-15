@@ -1,5 +1,7 @@
 """ darkbox base64 command """
 
+from .template import Command
+
 import os
 import argparse
 
@@ -7,47 +9,36 @@ from textwrap import wrap
 from base64 import b64encode, b64decode
 
 
-class base64:
+class base64(Command):
     def __init__(self):
         self.version = '0.0.1'
     
     def get_parser(self):
-        parser = argparse.ArgumentParser()
-
+        parser = super().get_parser()
+        parser.add_argument('file', nargs='?')
         parser.add_argument('-d', '--decode', action='store_true')
-        # parser.add_argument('-i', '--ignore-garbage', action='store_true')
         parser.add_argument('-w', '--wrap', type=int, default=76)
-        parser.add_argument('-v', '--version', default=False, action='store_true')
-        parser.add_argument("file", nargs="?")
+        # parser.add_argument('-i', '--ignore-garbage', action='store_true')
         return parser
-   
+
     def run(self):
-        parser = self.get_parser()
-        args = vars(parser.parse_args())
-        if args['version']:
-            print('darkbox {cls} v{version}'.format(
-                cls=self.__class__.__name__,
-                version=self.version))
-            return
+        args = self.get_args()
         
         file_path = args['file']
-
-        if not file_path:
-            print(parser.print_help())
+        try:
+            with open(file_path, 'rb') as f:
+                in_data = f.read()
+        except FileNotFoundError:
+            self.file_not_found_error(file_path)
             return
-
-        if not os.path.isfile(file_path):
-            print("Error: File not found!")
+        except IsADirectoryError:
+            self.directory_error(file_path)
             return
-
-        with open(file_path, 'rb') as f:
-            in_data = f.read()
 
         if args['decode']:
-            in_data = in_data.replace(b"\n", b"")
-            print(b64decode(in_data).decode("utf-8"), end='')
-
+            in_data = in_data.replace(b'\n', b'')
+            print(b64decode(in_data).decode('utf-8'), end='')
         else:
-            print('\n'.join(wrap(b64encode(in_data).decode("utf-8"), args['wrap'])))
+            print('\n'.join(wrap(b64encode(in_data).decode('utf-8'), args['wrap'])))
 
 

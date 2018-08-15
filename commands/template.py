@@ -28,7 +28,11 @@ class Command:
     def file_not_found_error(self, filename):
         print("{cls}: {dir}: No such file or directory".format(
                 cls=self.__class__.__name__,
-                dir=dir_name), file=stderr)
+                dir=filename), file=stderr)
+    
+    def run(self):
+        args = self.get_args()
+        pass
 
     # commands that inherit this template should define run()
     # this class will not define it in order to simulate a virtual class
