@@ -2,6 +2,7 @@
 
 from .template import Command
 
+import os
 import binascii
 
 
@@ -25,7 +26,15 @@ class xxd(Command):
     def run(self):
         args = self.get_args()
 
-        with open(args['file'], 'rb') as f:
+        file_path = args['file']
+        if os.path.isdir(file_path):
+            self.directory_error(file_path)
+            return
+        if not os.path.isfile(file_path):
+            self.file_not_found_error(file_path)
+            return
+
+        with open(file_path, 'rb') as f:
             line_counter = 0
             while True:
                 raw_line = f.read(args['cols'])

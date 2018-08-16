@@ -25,6 +25,10 @@ class base64(Command):
         args = self.get_args()
         
         file_path = args['file']
+        if not file_path:
+            self.get_parser().print_help()
+            return
+
         try:
             with open(file_path, 'rb') as f:
                 in_data = f.read()
