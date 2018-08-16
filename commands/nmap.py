@@ -1,4 +1,4 @@
-""" darkbox ls command """
+""" darkbox nmap command """
 
 from .template import Command
 
