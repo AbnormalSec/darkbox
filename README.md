@@ -2,4 +2,4 @@
 
 WIP portable all-in-one cross-platform toolkit.
 
-Written by your friendly neighbourhood AbnormalSec.
+Written by your friendly neighborhood AbnormalSec.
