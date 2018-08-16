@@ -1,6 +1,7 @@
 from .base64 import base64
 from .cat import cat
 from .curl import curl
+from .exip import exip
 from .ls import ls
 from .sha224sum import sha224sum
 from .sha256sum import sha256sum
