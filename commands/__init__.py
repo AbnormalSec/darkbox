@@ -3,6 +3,7 @@ from .cat import cat
 from .curl import curl
 from .exip import exip
 from .ls import ls
+from .md5sum import md5sum
 from .nmap import nmap
 from .sha224sum import sha224sum
 from .sha256sum import sha256sum
