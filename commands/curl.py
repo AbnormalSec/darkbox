@@ -21,7 +21,7 @@ class curl(Command):
         url = args['url']
 
         if not url:
-            print("Error: No URL specified.")
+            self.get_parser().print_help()
             return
         
         if not url.startswith('http'):

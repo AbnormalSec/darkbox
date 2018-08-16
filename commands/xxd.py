@@ -27,6 +27,9 @@ class xxd(Command):
         args = self.get_args()
 
         file_path = args['file']
+        if not file_path:
+            self.get_parser().print_help()
+            return
         if os.path.isdir(file_path):
             self.directory_error(file_path)
             return
