@@ -1,10 +1,17 @@
+#!/usr/bin/env python
+
 """ darkbox """
 
 import sys
-import commands
 import importlib
 
 __version__ = '0.0.1'
+
+if sys.version < '3':
+    print("Error: darkbox is only compatible with Python 3.")
+    sys.exit(1)
+else:
+    import commands
 
 
 def print_usage():
