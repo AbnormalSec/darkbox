@@ -30,10 +30,6 @@ class Command:
                 cls=self.__class__.__name__,
                 dir=filename), file=stderr)
     
-    def run(self):
-        args = self.get_args()
-        pass
-
     # commands that inherit this template should define run()
     # this class will not define it in order to simulate a virtual class
     # the template should not be runnable, but an example is below:
