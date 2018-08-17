@@ -1,21 +1,27 @@
-""" darkbox template for a command """
+""" darkbox head command """
 
 from .template import Command
+
 
 class head(Command):
     def __init__(self):
         self.version = '0.0.1'
-    
 
-    def get_parser(self, description=''):
-        parser = super().get_parser()
-        parser.add_argument("-n", "--lines", type=int, default=10)
-        parser.add_argument("file")
+    def get_parser(self):
+        parser = super().get_parser('darkbox head')
+        parser.add_argument('-n', '--lines', type=int, default=10)
+        parser.add_argument('file')
         return parser
-
 
     def run(self):
         args = self.get_args()
-        with open(args['file']) as f:
-            for line in range(args['lines']):
-                print(f.readline(), end='')
+        file_path = args['file']
+
+        try:
+            with open(file_path) as f:
+                for line in range(args['lines']):
+                    print(f.readline(), end='')
+        except FileNotFoundError:
+            self.file_not_found_error(file_path)
+        except IsADirectoryError:
+            self.directory_error(file_path)
