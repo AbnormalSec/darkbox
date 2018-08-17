@@ -12,16 +12,12 @@ class unzip(Command):
     
     def get_parser(self):
         parser = super().get_parser('darkbox unzip')
-        parser.add_argument('file', nargs='?')
+        parser.add_argument('file', help='input file')
         return parser
     
     def run(self):
         args = self.get_args()
         file_path = args['file']
-
-        if not file_path:
-            self.get_parser().print_help()
-            return
 
         try:
             with zipfile.ZipFile(file_path) as zf:

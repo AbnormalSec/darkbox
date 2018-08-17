@@ -11,26 +11,29 @@ class curl(Command):
         self.version = '0.0.1'
     
     def get_parser(self):
-        parser = super().get_parser()
-        parser.add_argument('url', nargs='?', type=str)
-        parser.add_argument('-O', '--output', default=False, type=str)
+        parser = super().get_parser(description='darkbox curl')
+        parser.add_argument('url', type=str, help='specify URL')
+        parser.add_argument('-O', '--output', default=False, type=str,
+                            help='Write output to a file')
         return parser
     
     def run(self):
         args = self.get_args()
         url = args['url']
-
-        if not url:
-            self.get_parser().print_help()
-            return
         
         if not url.startswith('http'):
             url = 'http://' + url
         
         if args['output']:
-            urllib.request.urlretrieve(url, args['output'])
+            file_path = args['output']
+            try:
+                urllib.request.urlretrieve(url, file_path)
+            except FileNotFoundError:
+                self.file_not_found_error(file_path)
+            except IsADirectoryError:
+                self.directory_error(file_path)
             return
         
         response = urllib.request.urlopen(url)
         data = response.read()
-        print(data.decode('utf-8'))
+        print(data.decode('utf-8').rstrip())

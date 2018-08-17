@@ -8,8 +8,8 @@ class cat(Command):
         self.version = '0.0.1'
     
     def get_parser(self):
-        parser = super().get_parser()
-        parser.add_argument('files', nargs='+')
+        parser = super().get_parser(description='darkbox cat')
+        parser.add_argument('files', nargs='+', help='input file')
         return parser
 
     def run(self):

@@ -8,9 +8,10 @@ class head(Command):
         self.version = '0.0.1'
 
     def get_parser(self):
-        parser = super().get_parser('darkbox head')
-        parser.add_argument('-n', '--lines', type=int, default=10)
-        parser.add_argument('file')
+        parser = super().get_parser(description='darkbox head')
+        parser.add_argument('file', help='input file')
+        parser.add_argument('-n', '--lines', type=int, default=10,
+                            help='number of lines to display')
         return parser
 
     def run(self):

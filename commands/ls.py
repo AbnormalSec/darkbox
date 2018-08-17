@@ -11,7 +11,7 @@ class ls(Command):
         self.version = '0.0.1'
     
     def get_parser(self):
-        parser = super().get_parser()
+        parser = super().get_parser(description='darkbox ls')
         return parser
     
     def run(self):

@@ -14,20 +14,17 @@ class base64(Command):
         self.version = '0.0.1'
     
     def get_parser(self):
-        parser = super().get_parser()
-        parser.add_argument('file', nargs='?')
-        parser.add_argument('-d', '--decode', action='store_true')
+        parser = super().get_parser(description='darkbox base64')
+        parser.add_argument('file', help='input file')
+        parser.add_argument('-d', '--decode', action='store_true',
+                            help='decodes input')
         parser.add_argument('-w', '--wrap', type=int, default=76)
         # parser.add_argument('-i', '--ignore-garbage', action='store_true')
         return parser
 
     def run(self):
         args = self.get_args()
-        
         file_path = args['file']
-        if not file_path:
-            self.get_parser().print_help()
-            return
 
         try:
             with open(file_path, 'rb') as f:
