@@ -10,7 +10,7 @@ class sha256sum(Command):
         self.algo = 'sha256'
     
     def get_parser(self):
-        parser = super().get_parser()
+        parser = super().get_parser(description='darkbox {}sum'.format(self.algo))
         parser.add_argument('files', nargs='*', help='input file(s)')
         return parser
     
