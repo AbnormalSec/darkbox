@@ -5,6 +5,7 @@ from .exip import exip
 from .ls import ls
 from .md5sum import md5sum
 from .nmap import nmap
+from .pwd import pwd
 from .sha224sum import sha224sum
 from .sha256sum import sha256sum
 from .sha384sum import sha384sum
