@@ -12,3 +12,4 @@ from .sha384sum import sha384sum
 from .sha512sum import sha512sum
 from .unzip import unzip
 from .xxd import xxd
+from .zip import zip
