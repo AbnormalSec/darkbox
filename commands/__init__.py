@@ -8,6 +8,7 @@ from .md5sum import md5sum
 from .mv import mv
 from .nmap import nmap
 from .pwd import pwd
+from .rm import rm
 from .sha224sum import sha224sum
 from .sha256sum import sha256sum
 from .sha384sum import sha384sum
