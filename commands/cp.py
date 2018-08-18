@@ -5,7 +5,6 @@ from .template import Command
 import os
 import argparse
 
-#from pathlib import Path
 from shutil import copy
 
 
@@ -45,10 +44,6 @@ class cp(Command):
                     fp = os.path.join(root, f)
                     src_paths.append(fp)
 
-        #dst_p = Path(dst)
-        #if src_is_dir and not (dst_p / '..').is_dir():
-        #    print("Error: subpath for {} does not exist!".format(dst))
-        #    return
         if src_is_dir and not os.path.exists(dst):
             os.makedirs(dst)
 
