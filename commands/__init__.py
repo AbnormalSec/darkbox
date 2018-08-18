@@ -1,5 +1,6 @@
 from .base64 import base64
 from .cat import cat
+from .cp import cp
 from .curl import curl
 from .exip import exip
 from .ls import ls
