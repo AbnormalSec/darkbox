@@ -49,7 +49,7 @@ class nmap(Command):
     
     def validate_ports(self, ports):
         for port in ports:
-            if not 1 < port < 65335:
+            if not 0 < port < 65336:
                 self.handle_port_outside_range(port)
                 
     def handle_port_outside_range(self, port):
