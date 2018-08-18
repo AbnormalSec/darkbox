@@ -5,6 +5,7 @@ from .curl import curl
 from .exip import exip
 from .ls import ls
 from .md5sum import md5sum
+from .mv import mv
 from .nmap import nmap
 from .pwd import pwd
 from .sha224sum import sha224sum
