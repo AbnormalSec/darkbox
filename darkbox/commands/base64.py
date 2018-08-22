@@ -1,6 +1,6 @@
 """ darkbox base64 command """
 
-from .template import Command
+from darkbox.commands.template import Command
 
 import os
 import argparse

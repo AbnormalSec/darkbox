@@ -1,6 +1,6 @@
 """ darkbox unzip command """
 
-from .template import Command
+from darkbox.commands.template import Command
 
 import zipfile
 import argparse

@@ -11,7 +11,7 @@ if sys.version < '3':
     print("Error: darkbox is only compatible with Python 3.")
     sys.exit(1)
 else:
-    import commands
+    import darkbox.commands as commands
 
 
 def print_usage():
@@ -37,7 +37,7 @@ def main():
         return
 
     try:
-        cmd_module = importlib.import_module('commands.{}'.format(cmd_name))
+        cmd_module = importlib.import_module('darkbox.commands.{}'.format(cmd_name))
     except ModuleNotFoundError:
         print("Error: Tool not found!")
         return

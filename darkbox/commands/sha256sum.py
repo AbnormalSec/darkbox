@@ -1,6 +1,6 @@
 """ darkbox sha256sum command """
 
-from .template import Command
+from darkbox.commands.template import Command
 
 import hashlib
 

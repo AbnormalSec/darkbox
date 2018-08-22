@@ -1,6 +1,6 @@
 """ darkbox nmap command """
 
-from .template import Command
+from darkbox.commands.template import Command
 
 import sys
 import time

@@ -1,6 +1,6 @@
 """ darkbox mv command """
 
-from .template import Command
+from darkbox.commands.template import Command
 
 import argparse
 

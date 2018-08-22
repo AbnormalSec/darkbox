@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from setuptools import setup
-from darkbox import __version__
+from darkbox.darkbox import __version__
 
 setup(
     name='darkbox',
