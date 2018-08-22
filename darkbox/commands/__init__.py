@@ -3,6 +3,8 @@ from .cat import cat
 from .cp import cp
 from .curl import curl
 from .exip import exip
+from .head import head
+from .hostname import hostname
 from .ls import ls
 from .md5sum import md5sum
 from .mv import mv
