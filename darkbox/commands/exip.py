@@ -29,4 +29,7 @@ class exip(Command):
             if external_ip and (6 < len(external_ip) < 16):
                 break
 
-        print(external_ip.decode('utf-8').rstrip())
+        if external_ip:
+            print(external_ip.decode('utf-8').rstrip())
+        else:
+            print("Error: Could not obtain external IP, no internet access?")
