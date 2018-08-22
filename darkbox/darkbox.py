@@ -5,7 +5,7 @@
 import sys
 import importlib
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 if sys.version < '3':
     print("Error: darkbox is only compatible with Python 3.")
