@@ -57,7 +57,7 @@ class package(Command):
             print("Error: platform unsupported!")
             return
         
-        print("darkbox package {ver} is attempting to {cmd} {pkg}...".format(
+        print("darkbox package v{ver} is attempting to {cmd} {pkg}...".format(
             ver=self.version,
             cmd=command,
             pkg=package
