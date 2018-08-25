@@ -9,6 +9,7 @@ from darkbox.commands.ls import ls
 from darkbox.commands.md5sum import md5sum
 from darkbox.commands.mv import mv
 from darkbox.commands.nmap import nmap
+from darkbox.commands.package import package
 from darkbox.commands.pwd import pwd
 from darkbox.commands.rm import rm
 from darkbox.commands.sha224sum import sha224sum
