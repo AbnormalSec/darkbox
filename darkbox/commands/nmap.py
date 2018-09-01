@@ -1,6 +1,7 @@
 """ darkbox nmap command """
 
 from darkbox.commands.template import Command
+from darkbox.static.ports import tcp_ports
 
 import sys
 import time
@@ -138,19 +139,18 @@ class nmap(Command):
         if port_str:
             ports = self.parse_port_str(port_str)
         else:
-            print("No port range specified.")
-            return
-        
+            ports = tcp_ports
+
         self.validate_ports(ports)
 
-        results = 'PORT      STATE\n'
+        results = '\nPORT      STATE\n'
         for p in ports:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             c = s.connect_ex((ip, p))
             socket.setdefaulttimeout(0.5)
             state = 'open' if not c else 'closed'
             results += '{:<9} {:<7}\n'.format(str(p)+'/tcp', state)
-        print(results.rstrip())
+        print(results)
 
         end_time = time.time()
         t_delta = end_time - start_time
