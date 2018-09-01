@@ -1,9 +1,17 @@
-""" darkbox head command """
+"""darkbox head command"""
 
 from darkbox.commands.template import Command
 
 
 class head(Command):
+    """darkbox head
+
+    output the first part of files
+
+    Designed to be similar to head from GNU coreutils.
+    Resource: https://www.gnu.org/software/coreutils/head
+    """
+
     def __init__(self):
         self.version = '0.0.1'
 

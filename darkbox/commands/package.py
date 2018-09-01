@@ -1,4 +1,4 @@
-""" darkbox package command """
+"""darkbox package command"""
 
 from darkbox.commands.template import Command
 from darkbox.util.osutil import get_platform, get_distro
@@ -8,6 +8,13 @@ import subprocess
 
 
 class package(Command):
+    """darkbox package
+
+    cross-platform package installer
+
+    This tool was written by vesche and is unique to the darkbox project.
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     

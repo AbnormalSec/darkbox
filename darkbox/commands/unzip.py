@@ -1,4 +1,4 @@
-""" darkbox unzip command """
+"""darkbox unzip command"""
 
 from darkbox.commands.template import Command
 
@@ -7,6 +7,14 @@ import argparse
 
 
 class unzip(Command):
+    """darkbox unzip
+
+    list, test and extract compressed files in a ZIP archive
+
+    Designed to be similar to unzip from Info-ZIP.
+    Resource: http://infozip.sourceforge.net/
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     

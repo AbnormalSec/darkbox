@@ -1,4 +1,4 @@
-""" darkbox ls command """
+"""darkbox ls command"""
 
 from darkbox.commands.template import Command
 
@@ -7,6 +7,14 @@ import argparse
 
 
 class ls(Command):
+    """darkbox ls
+
+    list directory contents
+
+    Designed to be similar to ls from GNU coreutils.
+    Resource: https://www.gnu.org/software/coreutils/ls
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     

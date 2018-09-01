@@ -1,4 +1,4 @@
-""" darkbox sha256sum command """
+"""darkbox sha256sum command"""
 
 from darkbox.commands.template import Command
 
@@ -6,6 +6,14 @@ import hashlib
 
 
 class sha256sum(Command):
+    """darkbox sha256sum
+
+    compute and check SHA256 message digest
+
+    Designed to be similar to sha256sum from GNU coreutils.
+    Resource: https://www.gnu.org/software/coreutils/sha256sum
+    """
+
     def __init__(self):
         self.version = '0.0.3'
         self.algo = 'sha256'

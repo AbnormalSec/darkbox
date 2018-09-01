@@ -1,4 +1,4 @@
-""" darkbox nmap command """
+"""darkbox nmap command"""
 
 from darkbox.commands.template import Command
 from darkbox.static.ports import tcp_ports
@@ -11,6 +11,14 @@ import ipaddress
 
 
 class nmap(Command):
+    """darkbox nmap
+
+    network exploration tool and security / port scanner
+
+    Designed to be similar to nmap by Gordon "Fyodor" Lyon.
+    Resource: https://nmap.org/
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     

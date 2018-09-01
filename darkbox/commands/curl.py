@@ -1,4 +1,4 @@
-""" darkbox curl command """
+"""darkbox curl command"""
 
 from darkbox.commands.template import Command
 
@@ -7,6 +7,14 @@ import urllib.request
 
 
 class curl(Command):
+    """darkbox curl
+
+    transfer a URL
+
+    Designed to be similar to curl by Daniel Stenberg.
+    Resource: https://curl.haxx.se
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     

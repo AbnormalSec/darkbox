@@ -1,4 +1,4 @@
-""" darkbox template for a command """
+"""darkbox template for a command"""
 
 import argparse
 from sys import stderr

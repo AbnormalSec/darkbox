@@ -1,4 +1,4 @@
-""" darkbox zip command """
+"""darkbox zip command"""
 
 from darkbox.commands.template import Command
 
@@ -8,6 +8,14 @@ import argparse
 
 
 class zip(Command):
+    """darkbox zip
+
+    package and compress (archive) files
+
+    Designed to be similar to zip from Info-ZIP.
+    Resource: http://infozip.sourceforge.net/
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     

@@ -1,4 +1,4 @@
-""" darkbox xxd command """
+"""darkbox xxd command"""
 
 from darkbox.commands.template import Command
 
@@ -7,11 +7,19 @@ import binascii
 
 
 class xxd(Command):
+    """darkbox xxd
+
+    make a hexdump or do the reverse
+
+    Designed to be similar to xxd by Juergen Weigert.
+    Resource: https://github.com/vim/vim/tree/master/src/xxd
+    """
+
     def __init__(self):
         self.version = '0.0.1'
 
     def get_parser(self):
-        parser = super().get_parser(description="produce or reverse hexdumps")
+        parser = super().get_parser(description='darkbox xxd')
         parser.add_argument("-r", "--reverse", action="store_true")
         parser.add_argument("-u", "--uppercase", action="store_true")
         parser.add_argument("-p", "--plain", action="store_true")

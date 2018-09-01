@@ -1,4 +1,4 @@
-""" darkbox rm command """
+"""darkbox rm command"""
 
 from darkbox.commands.template import Command
 
@@ -9,6 +9,14 @@ from shutil import rmtree
 
 
 class rm(Command):
+    """darkbox rm
+
+    remove files or directories
+
+    Designed to be similar to rm from GNU coreutils.
+    Resource: https://www.gnu.org/software/coreutils/rm
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     

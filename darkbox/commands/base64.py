@@ -1,4 +1,4 @@
-""" darkbox base64 command """
+"""darkbox base64 command"""
 
 from darkbox.commands.template import Command
 
@@ -10,6 +10,14 @@ from base64 import b64encode, b64decode
 
 
 class base64(Command):
+    """darkbox base64
+
+    base64 encode/decode data and print to standard output
+
+    Designed to be similar to base64 from GNU coreutils.
+    Resource: https://www.gnu.org/software/coreutils/base64
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     
@@ -41,5 +49,3 @@ class base64(Command):
             print(b64decode(in_data).decode('utf-8'), end='')
         else:
             print('\n'.join(wrap(b64encode(in_data).decode('utf-8'), args['wrap'])))
-
-

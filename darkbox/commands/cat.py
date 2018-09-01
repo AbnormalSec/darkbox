@@ -1,9 +1,17 @@
-""" darkbox cat command """
+"""darkbox cat command"""
 
 from darkbox.commands.template import Command
 
 
 class cat(Command):
+    """darkbox cat
+
+    concatenate files and print on the standard output
+
+    Designed to be similar to cat from GNU coreutils.
+    Resource: https://www.gnu.org/software/coreutils/cat
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     

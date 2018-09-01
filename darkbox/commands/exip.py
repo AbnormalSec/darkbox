@@ -1,4 +1,4 @@
-""" darkbox exip command """
+"""darkbox exip command"""
 
 from darkbox.commands.template import Command
 
@@ -7,6 +7,13 @@ import urllib.request
 
 
 class exip(Command):
+    """darkbox exip
+
+    obtain external ip address
+
+    This tool was written by vesche and is unique to the darkbox project.
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     

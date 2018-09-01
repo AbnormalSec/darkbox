@@ -1,4 +1,4 @@
-""" darkbox cp command """
+"""darkbox cp command"""
 
 from darkbox.commands.template import Command
 
@@ -9,6 +9,14 @@ from shutil import copy
 
 
 class cp(Command):
+    """darkbox cp
+
+    copy files and directories
+
+    Designed to be similar to cp from GNU coreutils.
+    Resource: https://www.gnu.org/software/coreutils/cp
+    """
+
     def __init__(self):
         self.version = '0.0.1'
     
