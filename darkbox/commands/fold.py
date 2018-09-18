@@ -24,15 +24,14 @@ class fold(Command):
 
     def run(self):
         args = self.get_args()
-        
+        width = args['width']
+
         for i in args['files']:
             try:
                 with open(i, 'r') as f:
                     for line in f:
-                        # dear god solve this. its awful. but functional.
-                        for part in [line.rstrip('\n')[n:n+args['width']] for n in range(0, len(line), args['width'])]:
-                            print(part)
-                        
+                        for n in range(0, len(line), width):
+                            print(line.rstrip('\n')[n:n+width])
             except FileNotFoundError:
                 self.file_not_found_error(i)
 
