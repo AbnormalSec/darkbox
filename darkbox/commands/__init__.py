@@ -3,6 +3,7 @@ from darkbox.commands.cat import cat
 from darkbox.commands.cp import cp
 from darkbox.commands.curl import curl
 from darkbox.commands.exip import exip
+from darkbox.commands.fold import fold
 from darkbox.commands.head import head
 from darkbox.commands.hostname import hostname
 from darkbox.commands.ls import ls
