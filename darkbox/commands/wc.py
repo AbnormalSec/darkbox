@@ -26,18 +26,19 @@ class wc(Command):
     def run(self):
         args = self.get_args()
         
-        # if none are chosen, then choose all (per GNU behavior)
-        if not any([args['lines'], args['bytes'], args['words']]):
-            args['lines'] = True
-            args['bytes'] = True
-            args['words'] = True
+        settings = ['lines', 'bytes', 'words']
         
-        totals = {'words': 0, 'lines': 0, 'chars': 0}
+        # if none are chosen, then choose all (per GNU behavior)
+        if not any(args[i] for i in settings):
+            for i in settings:
+                args[i] = True
+        
+        totals = {k:0 for k in settings}
         
         for i in args['files']:
             try:
                 with open(i, 'rb') as f:
-                    file_metrics = {'lines': 0, 'bytes': 0, 'words': 0}
+                    file_metrics = {k:0 for k in settings}
                     
                     curr_char = f.read(1)
                     while curr_char != b'':
@@ -46,6 +47,9 @@ class wc(Command):
                         if curr_char in b'\n\t ': file_metrics['words'] += 1
                         curr_char = f.read(1)
                         
+                for k in settings: 
+                    totals[k] += file_metrics[k]
+
                 print("{} {} {} {}".format(file_metrics['lines'], file_metrics['words'], file_metrics['bytes'], i))
 
             except FileNotFoundError:
@@ -53,3 +57,6 @@ class wc(Command):
 
             except IsADirectoryError:
                 self.directory_error(i)
+
+        if len(args['files']) > 1:
+            print("{} {} {} total".format(totals['lines'], totals['words'], totals['bytes']))
