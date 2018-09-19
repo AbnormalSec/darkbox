@@ -27,8 +27,8 @@ class cp(Command):
         parser.add_argument('-r', '--recursive', action='store_true')
         return parser
     
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
 
         src = args['src']
         dst = args['dst']

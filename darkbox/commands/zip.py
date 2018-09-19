@@ -25,8 +25,8 @@ class zip(Command):
         parser.add_argument('list', help='file list', nargs='*')
         return parser
     
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         zf = args['zipfile']
 
         with zipfile.ZipFile(zf, 'w') as myzip:

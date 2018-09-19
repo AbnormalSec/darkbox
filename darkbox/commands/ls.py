@@ -22,6 +22,6 @@ class ls(Command):
         parser = super().get_parser(description='darkbox ls')
         return parser
     
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         print(' '.join(os.listdir()))

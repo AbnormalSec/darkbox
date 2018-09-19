@@ -30,8 +30,8 @@ class base64(Command):
         # parser.add_argument('-i', '--ignore-garbage', action='store_true')
         return parser
 
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         file_path = args['file']
 
         try:

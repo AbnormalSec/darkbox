@@ -17,8 +17,8 @@ class Command:
                 ver=self.version))
         return parser
 
-    def get_args(self):
-        return vars(self.get_parser().parse_args())
+    def get_args(self, args=None):
+        return vars(self.get_parser().parse_args(args))
     
     def directory_error(self, dir_name):
         print("{cls}: {dir}: Is a directory".format(

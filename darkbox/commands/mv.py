@@ -25,8 +25,8 @@ class mv(Command):
         parser.add_argument('dst', help='destination')
         return parser
     
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         src = args['src']
         dst = args['dst']
         move(src, dst)

@@ -23,8 +23,8 @@ class unzip(Command):
         parser.add_argument('file', help='input file')
         return parser
     
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         file_path = args['file']
 
         try:

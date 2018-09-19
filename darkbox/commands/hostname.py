@@ -24,8 +24,8 @@ class hostname(Command):
                             help='short host name')
         return parser
     
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         simple = args['short']
         if simple:
             print(socket.gethostname().split('.')[0])

@@ -102,8 +102,8 @@ class nmap(Command):
                     self.handle_invalid_port(i)
         return ports
 
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         target = args['target']
         if not target:
             print("Error: No target specified.")

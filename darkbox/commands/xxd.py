@@ -31,8 +31,8 @@ class xxd(Command):
     def sidebar_str(s):
         return ''.join(chr(i) if 0x19<i<0x7f else '.' for i in s)
 
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
 
         file_path = args['file']
         if not file_path:

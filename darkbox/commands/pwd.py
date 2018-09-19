@@ -22,6 +22,6 @@ class pwd(Command):
         parser = super().get_parser(description='darkbox pwd')
         return parser
     
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         print(os.getcwd())

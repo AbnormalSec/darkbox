@@ -22,8 +22,8 @@ class fold(Command):
                             help='use WIDTH columns instead of 80')
         return parser
 
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         width = args['width']
 
         for i in args['files']:

@@ -25,8 +25,8 @@ class curl(Command):
                             help='Write output to a file')
         return parser
     
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         url = args['url']
         
         if not url.startswith('http'):

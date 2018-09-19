@@ -23,8 +23,8 @@ class wc(Command):
         parser.add_argument('files', nargs='+', help='input file')
         return parser
 
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
         
         settings = ['lines', 'bytes', 'words']
         

@@ -21,8 +21,8 @@ class exip(Command):
         parser = super().get_parser(description='darkbox exip')
         return parser
     
-    def run(self):
-        args = self.get_args()
+    def run(self, args=None):
+        args = self.get_args(args)
 
         exip_sites = [ 'ipinfo.io/ip', 'icanhazip.com', 'ident.me',
                        'ipecho.net/plain', 'myexternalip.com/raw',
