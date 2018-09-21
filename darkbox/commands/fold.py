@@ -32,6 +32,7 @@ class fold(Command):
                     for line in f:
                         for n in range(0, len(line), width):
                             print(line.rstrip('\n')[n:n+width])
+
             except FileNotFoundError:
                 self.file_not_found_error(i)
 

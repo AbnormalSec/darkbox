@@ -17,11 +17,18 @@ class uniq(Command):
     
     def get_parser(self):
         parser = super().get_parser(description='darkbox uniq')
-        parser.add_argument("-c", "--count", action="store_const", const="{cnt} {str}", default="{str}", help="prefix lines by the number of occurrences")
-        parser.add_argument("-d", "--repeated", action="store_true", help="only print duplicate lines")
-        parser.add_argument("-i", "--ignore-case", action="store_const", const=str.lower, default=str, help="ignore differences in case when comparing")
-        parser.add_argument("-u", "--unique", action="store_true", help="only print unique lines")
-        #parser.add_argument("-z", "--zero-terminated", action="store_true", help="end lines with 0 byte, not newline")
+        parser.add_argument("-c", "--count", action="store_const",
+                            const="{cnt} {str}", default="{str}",
+                            help="prefix lines by the number of occurrences")
+        parser.add_argument("-d", "--repeated", action="store_true",
+                            help="only print duplicate lines")
+        parser.add_argument("-i", "--ignore-case", action="store_const",
+                            const=str.lower, default=str,
+                            help="ignore differences in case when comparing")
+        parser.add_argument("-u", "--unique", action="store_true",
+                            help="only print unique lines")
+        # parser.add_argument("-z", "--zero-terminated", action="store_true",
+        #                     help="end lines with 0 byte, not newline")
         parser.add_argument("file", help="input file")
         return parser
 

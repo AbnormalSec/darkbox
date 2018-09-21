@@ -3,10 +3,11 @@
 from darkbox.commands.template import Command
 from sys import stderr
 
+
 class factor(Command):
     """darkbox factor
 
-    concatenate files and print on the standard output
+    prints prime factors
 
     Designed to be similar to factor from GNU coreutils.
     Resource: https://www.gnu.org/software/coreutils/factor
@@ -43,5 +44,4 @@ class factor(Command):
                 print('') # just for the newline
 
             except ValueError:
-                print("factor: \"{}\" is not a valid positive integer".format(i), file=stderr)
-
+                print("factor: '{}' is not a valid positive integer".format(i), file=stderr)

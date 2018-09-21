@@ -6,18 +6,17 @@ from darkbox.commands.template import Command
 class tac(Command):
     """darkbox tac
 
-    concatenate files and print on the standard output
-    in reverse order
+    concatenate and print files in reverse
 
-    Designed to be similar to cat from GNU coreutils.
-    Resource: https://www.gnu.org/software/coreutils/cat
+    Designed to be similar to tac from GNU coreutils.
+    Resource: https://www.gnu.org/software/coreutils/tac
     """
 
     def __init__(self):
         self.version = '0.0.1'
     
     def get_parser(self):
-        parser = super().get_parser(description='darkbox cat')
+        parser = super().get_parser(description='darkbox tac')
         parser.add_argument('files', nargs='+', help='input file')
         return parser
 

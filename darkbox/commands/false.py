@@ -6,7 +6,7 @@ from darkbox.commands.template import Command
 class false(Command):
     """darkbox false
 
-    do nothing and return false
+    do nothing, unsuccessfully
 
     Designed to be similar to false from GNU coreutils.
     Resource: https://www.gnu.org/software/coreutils/false

@@ -1,4 +1,4 @@
-"""darkbox cat command"""
+"""darkbox wc command"""
 
 from darkbox.commands.template import Command
 
@@ -6,7 +6,7 @@ from darkbox.commands.template import Command
 class wc(Command):
     """darkbox wc
 
-    count characters or lines in files
+    print newline, word, and byte counts for each file
 
     Designed to be similar to wc from GNU coreutils.
     Resource: https://www.gnu.org/software/coreutils/wc
@@ -50,7 +50,8 @@ class wc(Command):
                 for k in settings: 
                     totals[k] += file_metrics[k]
 
-                print("{} {} {} {}".format(file_metrics['lines'], file_metrics['words'], file_metrics['bytes'], i))
+                print("{} {} {} {}".format(file_metrics['lines'],
+                    file_metrics['words'], file_metrics['bytes'], i))
 
             except FileNotFoundError:
                 self.file_not_found_error(i)
@@ -59,4 +60,5 @@ class wc(Command):
                 self.directory_error(i)
 
         if len(args['files']) > 1:
-            print("{} {} {} total".format(totals['lines'], totals['words'], totals['bytes']))
+            print("{} {} {} total".format(totals['lines'], totals['words'],
+                totals['bytes']))
