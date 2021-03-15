@@ -1,11 +1,10 @@
 """darkbox rm command"""
 
-from darkbox.commands.template import Command
-
 import os
 import argparse
 
 from shutil import rmtree
+from darkbox.commands.template import Command
 
 
 class rm(Command):
@@ -18,7 +17,7 @@ class rm(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
+        self.version = '0.1.0'
     
     def get_parser(self):
         parser = super().get_parser(description='darkbox rm')

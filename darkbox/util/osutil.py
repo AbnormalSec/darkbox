@@ -1,19 +1,19 @@
-""" darkbox.util.osutil """
+"""darkbox.util.osutil"""
 
+import distro
 import platform
 
 
 def get_platform():
     plat = platform.system()
     if plat == 'Darwin':
-        plat_monk = 'mac'
+        return 'mac'
     elif plat == 'Windows':
-        plat_monk = 'win'
+        return 'win'
     elif plat == 'Linux':
-        plat_monk = 'nix'
+        return 'nix'
     else:
-        plat_monk = 'unk'
-    return plat_monk
+        return 'unk'
 
 
 def get_distro():
@@ -24,5 +24,4 @@ def get_distro():
         'mandrake', 'mandriva', 'rocks', 'slackware', 'yellowdog', 'gentoo',
         'UnitedLinux', 'turbolinux', 'arch', 'mageia')
     """
-    distro = platform.linux_distribution()
-    return distro
+    return distro.linux_distribution(full_distribution_name=False)[0]

@@ -1,10 +1,9 @@
 """darkbox mv command"""
 
-from darkbox.commands.template import Command
-
 import argparse
 
 from shutil import move
+from darkbox.commands.template import Command
 
 
 class mv(Command):
@@ -17,7 +16,7 @@ class mv(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
+        self.version = '0.1.0'
     
     def get_parser(self):
         parser = super().get_parser(description='darkbox mv')

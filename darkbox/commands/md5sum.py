@@ -1,4 +1,4 @@
-""" darkbox md5sum command """
+"""darkbox md5sum command"""
 
 from .sha256sum import sha256sum
 

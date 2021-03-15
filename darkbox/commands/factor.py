@@ -1,7 +1,7 @@
 """darkbox factor command"""
 
-from darkbox.commands.template import Command
 from sys import stderr
+from darkbox.commands.template import Command
 
 
 class factor(Command):
@@ -14,8 +14,8 @@ class factor(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
-    
+        self.version = '0.1.0'
+
     def get_parser(self):
         parser = super().get_parser(description='darkbox factor')
         parser.add_argument('numbers', nargs='+', help='integers')
@@ -28,20 +28,20 @@ class factor(Command):
             try:
                 num = int(i)
 
-                print("{}:".format(num), end='')
+                print(f'{num}:', end='')
 
                 while not (num & 1) and num != 0:
-                    print(" 2", end='')
+                    print(' 2', end='')
                     num >>=1
 
                 f = 3
                 while num > 1:
                     while (num % f) == 0:
-                        print(" {}".format(f), end='')
+                        print(f' {f}', end='')
                         num /= f
                     f+=2
 
-                print('') # just for the newline
+                print() # just for the newline
 
             except ValueError:
-                print("factor: '{}' is not a valid positive integer".format(i), file=stderr)
+                print(f'factor: '{i}' is not a valid positive integer', file=stderr)

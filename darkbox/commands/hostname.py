@@ -1,9 +1,9 @@
 """darkbox hostname command"""
 
-from darkbox.commands.template import Command
-
 import socket
 import argparse
+
+from darkbox.commands.template import Command
 
 
 class hostname(Command):
@@ -16,14 +16,15 @@ class hostname(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
-    
+        self.version = '0.1.0'
+
     def get_parser(self):
         parser = super().get_parser(description='darkbox hostname')
-        parser.add_argument('-s', '--short', action='store_true',
-                            help='short host name')
+        parser.add_argument(
+            '-s', '--short', action='store_true', help='short host name'
+        )
         return parser
-    
+
     def run(self, args=None):
         args = self.get_args(args)
         simple = args['short']

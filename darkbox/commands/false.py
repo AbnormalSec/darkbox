@@ -13,7 +13,7 @@ class false(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
+        self.version = '0.1.0'
     
     def run(self, args=None):
         exit(1) 

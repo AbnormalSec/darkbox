@@ -1,11 +1,10 @@
 """darkbox cp command"""
 
-from darkbox.commands.template import Command
-
 import os
 import argparse
 
 from shutil import copy
+from darkbox.commands.template import Command
 
 
 class cp(Command):
@@ -18,18 +17,17 @@ class cp(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
-    
+        self.version = '0.1.0'
+
     def get_parser(self):
         parser = super().get_parser(description='darkbox cp')
         parser.add_argument('src', help='source')
         parser.add_argument('dst', help='destination')
         parser.add_argument('-r', '--recursive', action='store_true')
         return parser
-    
+
     def run(self, args=None):
         args = self.get_args(args)
-
         src = args['src']
         dst = args['dst']
         recursive = args['recursive']
@@ -39,10 +37,10 @@ class cp(Command):
             self.file_not_found_error(src)
             return
         if os.path.isdir(src) and not recursive:
-            print("cp: {} is a directory (not copied).".format(src))
+            print(f'cp: {src} is a directory (not copied).')
             return
-        
-        src_paths = []
+
+        src_paths = list()
         if os.path.isfile(src):
             src_paths.append(src)
         elif os.path.isdir(src):

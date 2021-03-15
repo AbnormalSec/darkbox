@@ -19,12 +19,12 @@ If you'd like to run darkbox from the git repo source code you can:
 ```bash
 $ git clone https://github.com/abnormalsec/darkbox
 $ # use it directly as a module like so
-$ python3 -m darkbox.darkbox -v
-darkbox 0.0.2
+$ python -m darkbox.darkbox -v
+darkbox 0.1.0
 $ # or manually install it
-$ python3 setup.py install
+$ python setup.py install
 $ darkbox -v
-darkbox 0.0.2
+darkbox 0.1.0
 ```
 
 ## Usage
@@ -48,5 +48,3 @@ Nmap done: 1 IP addresses scanned in 0.02 seconds
 $ darkbox md5sum /bin/ls
 d77c1dd5bb8e39c2dd27c96c3fd2263e /bin/ls
 ```
-
-More documentation will be coming, this project is being actively hacked on. :)

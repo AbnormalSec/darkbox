@@ -1,9 +1,9 @@
 """darkbox unzip command"""
 
-from darkbox.commands.template import Command
-
 import zipfile
 import argparse
+
+from darkbox.commands.template import Command
 
 
 class unzip(Command):
@@ -16,13 +16,13 @@ class unzip(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
-    
+        self.version = '0.1.0'
+
     def get_parser(self):
         parser = super().get_parser('darkbox unzip')
         parser.add_argument('file', help='input file')
         return parser
-    
+
     def run(self, args=None):
         args = self.get_args(args)
         file_path = args['file']
@@ -30,7 +30,7 @@ class unzip(Command):
         try:
             with zipfile.ZipFile(file_path) as zf:
                 zf.extractall('.')
-                print('File {} extracted.'.format(file_path))
+                print(f'File {file_path} extracted.')
         except (zipfile.BadZipfile, OSError):
             print('Error: Failed to unzip file.')
         except IsADirectoryError:

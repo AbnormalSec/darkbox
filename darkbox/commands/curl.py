@@ -1,9 +1,9 @@
 """darkbox curl command"""
 
-from darkbox.commands.template import Command
-
 import argparse
 import urllib.request
+
+from darkbox.commands.template import Command
 
 
 class curl(Command):
@@ -16,7 +16,7 @@ class curl(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
+        self.version = '0.1.0'
     
     def get_parser(self):
         parser = super().get_parser(description='darkbox curl')

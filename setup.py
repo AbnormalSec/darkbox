@@ -1,13 +1,24 @@
 #!/usr/bin/env python
 
+import os
 from setuptools import setup
-from darkbox.darkbox import __version__
+
+directory = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name='darkbox',
-    packages=['darkbox', 'darkbox.commands', 'darkbox.static'],
-    version=__version__,
-    description='Portable all-in-one cross-platform toolkit.',
+    packages=[
+        'darkbox',
+        'darkbox.commands',
+        'darkbox.static',
+        'darkbox.util',
+    ],
+    version='0.1.0',
+    description='Portable, all-in-one, cross-platform toolkit.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     license='WTFPL',
     url='https://github.com/AbnormalSec/darkbox',
     author='AbnormalSec',
@@ -17,14 +28,16 @@ setup(
             'darkbox = darkbox.darkbox:main',
         ]
     },
-    # install_requires=[],
+    install_requires=[
+        'distro',
+    ],
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Environment :: Console",
         "Intended Audience :: Information Technology",
         "License :: Public Domain",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.9",
         "Topic :: Security"
     ]
 )

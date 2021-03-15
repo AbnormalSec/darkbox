@@ -1,12 +1,11 @@
 """darkbox base64 command"""
 
-from darkbox.commands.template import Command
-
 import os
 import argparse
 
 from textwrap import wrap
 from base64 import b64encode, b64decode
+from darkbox.commands.template import Command
 
 
 class base64(Command):
@@ -19,15 +18,13 @@ class base64(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
-    
+        self.version = '0.1.0'
+
     def get_parser(self):
         parser = super().get_parser(description='darkbox base64')
         parser.add_argument('file', help='input file')
-        parser.add_argument('-d', '--decode', action='store_true',
-                            help='decodes input')
+        parser.add_argument('-d', '--decode', action='store_true', help='decodes input')
         parser.add_argument('-w', '--wrap', type=int, default=76)
-        # parser.add_argument('-i', '--ignore-garbage', action='store_true')
         return parser
 
     def run(self, args=None):

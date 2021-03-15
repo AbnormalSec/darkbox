@@ -13,8 +13,8 @@ class cat(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
-    
+        self.version = '0.1.0'
+
     def get_parser(self):
         parser = super().get_parser(description='darkbox cat')
         parser.add_argument('files', nargs='+', help='input file')
@@ -22,7 +22,7 @@ class cat(Command):
 
     def run(self, args=None):
         args = self.get_args(args)
-        
+
         for i in args['files']:
             try:
                 with open(i, 'r') as f:

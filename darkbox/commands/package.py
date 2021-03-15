@@ -1,10 +1,10 @@
 """darkbox package command"""
 
-from darkbox.commands.template import Command
-from darkbox.util.osutil import get_platform, get_distro
-
 import argparse
 import subprocess
+
+from darkbox.commands.template import Command
+from darkbox.util.osutil import get_platform, get_distro
 
 
 class package(Command):
@@ -16,21 +16,21 @@ class package(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
-    
+        self.version = '0.1.0'
+
     def get_parser(self):
         parser = super().get_parser(description='darkbox package')
         parser.add_argument('command', help='install or uninstall')
         parser.add_argument('package', help='package name')
         return parser
-    
+
     def run(self, args=None):
         args = self.get_args(args)
 
         if args['command'] not in ['install', 'uninstall']:
             self.get_parser().print_help()
             return
-    
+
         command = args['command']
         package = args['package']
 
@@ -61,14 +61,10 @@ class package(Command):
                 print('Error: Distro not found!')
                 return
         else:
-            print("Error: platform unsupported!")
+            print('Error: platform unsupported!')
             return
-        
-        print("darkbox package v{ver} is attempting to {cmd} {pkg}...".format(
-            ver=self.version,
-            cmd=command,
-            pkg=package
-        ))
+
+        print(f'darkbox package v{self.version} is attempting to {command} {package}...')
         try:
             if command == 'install':
                 c = pkg_install.split() + [package]
@@ -79,6 +75,4 @@ class package(Command):
         except FileNotFoundError:
             self.file_not_found_error(pkg_install.split()[0])
         except subprocess.CalledProcessError:
-            print("Error: {pkg} could not be installed!".format(
-                pkg=package
-            ))
+            print(f'Error: {package} could not be installed!')

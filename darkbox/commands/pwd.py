@@ -1,9 +1,9 @@
 """darkbox pwd command"""
 
-from darkbox.commands.template import Command
-
 import os
 import argparse
+
+from darkbox.commands.template import Command
 
 
 class pwd(Command):
@@ -16,12 +16,11 @@ class pwd(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
+        self.version = '0.1.0'
     
     def get_parser(self):
-        parser = super().get_parser(description='darkbox pwd')
-        return parser
-    
+        return super().get_parser(description='darkbox pwd')
+
     def run(self, args=None):
         args = self.get_args(args)
         print(os.getcwd())

@@ -1,13 +1,13 @@
 """darkbox nmap command"""
 
-from darkbox.commands.template import Command
-from darkbox.static.ports import tcp_ports
-
 import sys
 import time
 import socket
 import argparse
 import ipaddress
+
+from darkbox.static.ports import tcp_ports
+from darkbox.commands.template import Command
 
 
 class nmap(Command):
@@ -20,8 +20,8 @@ class nmap(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
-    
+        self.version = '0.1.0'
+
     def get_parser(self):
         parser = super().get_parser(description='darkbox nmap')
         parser.add_argument('target', nargs='?')
@@ -43,39 +43,36 @@ class nmap(Command):
             return socket.gethostbyname_ex(domain)[2]
         except (socket.gaierror, socket.herror):
             return False
-    
+
     @staticmethod
     def reverse_ip_lookup(ip):
         try:
             return socket.gethostbyaddr(ip)[0]
         except (OSError, socket.gaierror, socket.herror):
             return False
-    
+
     @staticmethod
     def get_datetime():
-        return time.strftime('%Y-%M-%d %H:%M {}'.format(time.tzname[0]),
-            time.localtime())
-    
+        return time.strftime(f'%Y-%M-%d %H:%M {time.tzname[0]}', time.localtime())
+
     def validate_ports(self, ports):
         for port in ports:
             if not 0 < port < 65536:
                 self.handle_port_outside_range(port)
-                
+
     def handle_port_outside_range(self, port):
-        print("Ports specified must be between 0 and 65535 inclusive")
-        print("QUITTING!")
+        print('Ports specified must be between 0 and 65535 inclusive')
+        print('QUITTING!')
         sys.exit(1)
 
     def handle_invalid_port(self, port):
-        print('Invalid port "{p}" specified'.format(p=port))
-        print("QUITTING!")
+        print(f'Invalid port "{port}" specified')
+        print('QUITTING!')
         sys.exit(1)
-    
+
     def handle_backwards_port_range(self, a, b):
-        print('Your port range {a}-{b} is backwards. Did you mean {b}-{a}?'.format(
-            a=a, b=b
-        ))
-        print("QUITTING!")
+        print(f'Your port range {a}-{b} is backwards. Did you mean {b}-{a}?')
+        print('QUITTING!')
         sys.exit(1)
 
     def parse_port_str(self, port_str):
@@ -106,15 +103,11 @@ class nmap(Command):
         args = self.get_args(args)
         target = args['target']
         if not target:
-            print("Error: No target specified.")
+            print('Error: No target specified.')
             return
-        
-        start_time = time.time()
 
-        print("Starting darkbox Nmap v{ver} at {dt}".format(
-            ver=self.version,
-            dt=self.get_datetime()
-        ))
+        start_time = time.time()
+        print(f'Starting darkbox Nmap v{self.version} at {self.get_datetime()}')
 
         if self.validate_ip(target):
             ip = target
@@ -126,21 +119,18 @@ class nmap(Command):
                 ip = ips[0]
                 other_ips = ips[1:]
             else:
-                print('Failed to resolve "{}".'.format(target))
+                print(f'Failed to resolve "{target}".')
                 return
             domain = target
         
         if not domain:
             report = ip
         else:
-            report = "{dmn} ({i})".format(dmn=domain, i=ip)
-        
-        print("Nmap scan report for {}".format(report))
+            report = f'{domain} ({ip})'
+
+        print(f'Nmap scan report for {report}')
         if other_ips:
-            print("Other addresses for {dmn} (not scanned): {li}".format(
-                dmn=target,
-                li=', '.join(other_ips)
-            ))
+            print(f'Other addresses for {target} (not scanned): {", ".join(other_ips)}')
 
         # TODO: Add top 1000 ports, and UDP scanning.
         port_str = args['ports']
@@ -157,13 +147,11 @@ class nmap(Command):
             c = s.connect_ex((ip, p))
             socket.setdefaulttimeout(0.5)
             state = 'open' if not c else 'closed'
-            results += '{:<9} {:<7}\n'.format(str(p)+'/tcp', state)
+            results += f'{str(p)+"/tcp":<9} {state:<7}\n'
         print(results)
 
         end_time = time.time()
         t_delta = end_time - start_time
 
         # TODO: multiple hosts / subnet
-        print("Nmap done: {x} IP addresses scanned in {s} seconds".format(
-            x=1, s='{0:.2f}'.format(t_delta)
-        ))
+        print(f'Nmap done: 1 IP addresses scanned in {t_delta:.2f}')

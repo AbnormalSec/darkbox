@@ -13,13 +13,17 @@ class head(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
+        self.version = '0.1.0'
 
     def get_parser(self):
         parser = super().get_parser(description='darkbox head')
-        parser.add_argument('file', help='input file')
-        parser.add_argument('-n', '--lines', type=int, default=10,
-                            help='number of lines to display')
+        parser.add_argument(
+            'file', help='input file'
+        )
+        parser.add_argument(
+            '-n', '--lines', type=int, default=10,
+            help='number of lines to display'
+        )
         return parser
 
     def run(self, args=None):

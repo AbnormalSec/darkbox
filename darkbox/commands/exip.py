@@ -1,9 +1,9 @@
 """darkbox exip command"""
 
-from darkbox.commands.template import Command
-
 import argparse
 import urllib.request
+
+from darkbox.commands.template import Command
 
 
 class exip(Command):
@@ -15,7 +15,7 @@ class exip(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
+        self.version = '0.1.0'
     
     def get_parser(self):
         parser = super().get_parser(description='darkbox exip')
@@ -24,10 +24,11 @@ class exip(Command):
     def run(self, args=None):
         args = self.get_args(args)
 
-        exip_sites = [ 'ipinfo.io/ip', 'icanhazip.com', 'ident.me',
-                       'ipecho.net/plain', 'myexternalip.com/raw',
-                       'wtfismyip.com/text' ]
-        external_ip = ''
+        exip_sites = [
+            'ipinfo.io/ip', 'icanhazip.com', 'ident.me', 'ipecho.net/plain',
+            'myexternalip.com/raw', 'wtfismyip.com/text'
+        ]
+        external_ip = str()
         for url in exip_sites:
             try:
                 external_ip = urllib.request.urlopen('http://'+url).read()
@@ -39,4 +40,4 @@ class exip(Command):
         if external_ip:
             print(external_ip.decode('utf-8').rstrip())
         else:
-            print("Error: Could not obtain external IP, no internet access?")
+            print('Error: Could not obtain external IP, no internet access?')

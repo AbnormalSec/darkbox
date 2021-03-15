@@ -13,13 +13,17 @@ class fold(Command):
     """
 
     def __init__(self):
-        self.version = '0.0.1'
-    
+        self.version = '0.1.0'
+
     def get_parser(self):
         parser = super().get_parser(description='darkbox fold')
-        parser.add_argument('files', nargs='+', help='input file')
-        parser.add_argument('-w', '--width', type=int, default=80,
-                            help='use WIDTH columns instead of 80')
+        parser.add_argument(
+            'files', nargs='+', help='input file'
+        )
+        parser.add_argument(
+            '-w', '--width', type=int, default=80,
+            help='use WIDTH columns instead of 80'
+        )
         return parser
 
     def run(self, args=None):
